@@ -20,6 +20,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "**/*.ts", "**/*.tsx"],
+  /* absolute path */
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["src/*"],
+    "@assets/*": ["src/assets/*"],
+    "@components/*": ["src/components/*"],
+    "@fetch/*": ["src/fetch/*"],
+  },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
