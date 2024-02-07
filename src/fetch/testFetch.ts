@@ -8,6 +8,11 @@ export interface ItemType{
   "body": string
 }
 
-export async function fetchGetAllList(){
-  return await apiFetch<ItemType[]>(JSON_LIST, 'get')
+// fetching 속도가 너무 빨라서 의도적으로 타임 딜레이 추가
+export function fetchGetAllList(){
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(apiFetch<ItemType[]>(JSON_LIST, 'get'))
+    }, 1000);
+  })
 }

@@ -1,29 +1,24 @@
 import './App.css'
-import { useCountStore } from './zustand/countState.ts';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
 import FetchZustand from './pages/fetchZustand.tsx';
+import FetchQuery from './pages/FetchQuery.tsx';
 
+// Create a client
+const queryClient = new QueryClient()
 
 function App() {
-  const { count, increment, decrement } = useCountStore(state => state);
-
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <h1>Vite + React</h1>
       <h1>Zustand + React Query</h1>
-      {/*<div className="card">*/}
-      {/*  <p>{count} 결과값</p>*/}
-      {/*  <button onClick={increment}>*/}
-      {/*    Plus*/}
-      {/*  </button>*/}
-      {/*  <button onClick={decrement}>*/}
-      {/*    Minus*/}
-      {/*  </button>*/}
-      {/*</div>*/}
-      <FetchZustand />
+      <FetchQuery />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </QueryClientProvider>
   )
 }
 
