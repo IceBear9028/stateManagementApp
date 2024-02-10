@@ -14,3 +14,11 @@ export const useCountStore = create<State & Actions>((set) => ({
   increment: () => set((state) => ({ count: state.count + 1 })),
   decrement: () => set((state) => ({ count: state.count - 1 })),
 }))
+
+
+// practice no store action
+export const useNoActionStore = create<State>(() => ({
+  count : 0
+}))
+export const incrementStore = () =>  useNoActionStore.setState(state => ({count: state.count + 1}));
+export const decrementStore = () =>  useNoActionStore.setState(state => ({count: state.count - 1}));
