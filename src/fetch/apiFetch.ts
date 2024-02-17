@@ -1,13 +1,13 @@
-import axios, {AxiosProgressEvent} from 'axios';
+import axios, { AxiosProgressEvent } from 'axios';
 
 export interface ApiConfigTypes {
-  params?: {[index: string]: string | number | boolean};
-  body?: {[index: string]: any};
+  params?: { [index: string]: string | number | boolean };
+  body?: { [index: string]: any };
   uploadProgress?: (progress: number) => void;
   downloadProgress?: (progress: number) => void;
   getHeader?: boolean;
   responseType?: 'blob';
-  headers?: {[index: string]: string};
+  headers?: { [index: string]: string };
 }
 
 export type BaseResponseType<T = unknown> = {
@@ -36,10 +36,9 @@ interface SuccessResponseType<T> extends BaseResponseType<T> {
 
 export type ApiResponseType<T> = InitResponseType | LoadResponseType | ErrorResponseType | SuccessResponseType<T>;
 
-
 export async function apiFetch<T = any>(url: string, method: string, config?: ApiConfigTypes): Promise<ApiResponseType<T>> {
   try {
-    let headers = config?.headers ? config?.headers : {'Content-Type': 'application/json'};
+    let headers = config?.headers ? config?.headers : { 'Content-Type': 'application/json' };
     headers = {
       ...headers,
     };
