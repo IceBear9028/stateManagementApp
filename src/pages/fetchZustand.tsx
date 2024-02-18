@@ -6,7 +6,7 @@ const FetchZustand = () => {
   const { itemList, fetchGet } = useFetchListZustand();
   return (
     <div>
-      {itemList && itemList.map((item, index) => <p key={`-${index}`}>{item.userId}</p>)}
+      {itemList.length && itemList.map((item, index) => <p key={`-${index}`}>{item.title}</p>)}
       <button onClick={fetchGet}>버튼 클릭</button>
     </div>
   );

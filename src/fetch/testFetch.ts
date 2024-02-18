@@ -1,4 +1,4 @@
-import { apiFetch } from './apiFetch.ts';
+import { apiFetch, ApiResponseType } from './apiFetch.ts';
 import { JSON_LIST } from './urls.ts';
 
 export interface ItemType {
@@ -10,7 +10,7 @@ export interface ItemType {
 
 // fetching 속도가 너무 빨라서 의도적으로 타임 딜레이 추가
 export function fetchGetAllList() {
-  return new Promise((resolve, reject) => {
+  return new Promise<ApiResponseType<ItemType[]>>((resolve) => {
     setTimeout(() => {
       resolve(apiFetch<ItemType[]>(JSON_LIST, 'get'));
     }, 1000);
