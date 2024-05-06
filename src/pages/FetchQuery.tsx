@@ -15,3 +15,47 @@ const FetchQuery = () => {
 };
 
 export default FetchQuery;
+
+interface ItemApi {
+  name: string;
+  id: number;
+  type: string;
+}
+
+interface ItemResponse {
+  itemList: ItemApi[];
+}
+
+class Item {
+  readonly itemName: string;
+  readonly itemId: number;
+  readonly itemType: string;
+
+  constructor(item: ItemApi) {
+    this.itemName = item.name;
+    this.itemId = item.id;
+    this.itemType = item.type;
+  }
+}
+
+class ItemList {
+  readonly items: Item[];
+
+  constructor({ itemList }: ItemResponse) {
+    this.items = itemList.map((item) => new Item(item));
+  }
+}
+
+const fakeItem: ItemResponse = {
+  itemList: [
+    {
+      name: 'data',
+      id: 30,
+      type: 'AADD',
+    },
+  ],
+};
+
+const data = new ItemList(fakeItem);
+
+console.log(data);
